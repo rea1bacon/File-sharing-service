@@ -63,13 +63,11 @@ class server:
             if key != "buffer":
                 kv = bytes(f"{key} {value}\n",'utf-8')
                 sleep(0.1)
-                print(kv)
                 client.send(kv)
             
         if self.Recv(client,255) == b"RECV\n":
             print(f"💌 Starting Transfer of {self.filedesc['name']}...")
             for i in self.filedesc["buffer"]:
-                sleep(0.1)
                 client.send(i)
             if self.Recv(client,255) == b"DONE\n":
                 print("✅ Transfer is done !")

@@ -25,8 +25,8 @@ class Handler:
             with open(self.path,"rb") as file:
                 Raw = file.read()
                 HexBuffer = []
-                for i in range(0,len(Raw),1024):
-                    HexBuffer.append(Raw[i:i+1024])
+                for i in range(0,len(Raw),5000):
+                    HexBuffer.append(Raw[i:i+5000])
                 return True,{"buffer":HexBuffer,
                         "name":self.FileName,
                         "size" : len(Raw),

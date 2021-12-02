@@ -50,21 +50,21 @@ class client:
                 sys.exit() 
         client.send(b"RECV\n")
         Buffer = b""
-        if size % 1024 == 0:
-            a = int(size / 1024)
+        if size % 5000 == 0:
+            a = int(size / 5000)
         else:
-            a = int(size // 1024) + 1
+            a = int(size // 5000) + 1
         
         print("👂 Receiving data...")
         # Setup progress bar
-        ach = [" " for i in range(100)]
+        ach = [" " for i in range(50)]
         for i in range(1,a+1):
-            Buffer+=self.Recv(client,1024)
+            Buffer+=self.Recv(client,5000)
             # i * 100 / a
-            Totprg = int((i * 100)/a)
+            Totprg = int((i * 50)/a)
             for j in range(Totprg):
                 ach[j] = "="
-            print(f"[{''.join(ach)}] {Totprg} %",end="\r")
+            print(f"[{''.join(ach)}] {int(Totprg * 2)} %",end="\r")
         print("\n")
         client.send(b"DONE\n")
             
