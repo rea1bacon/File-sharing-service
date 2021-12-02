@@ -1,3 +1,2 @@
-.vscode
-*.jpg
-*.txt
+.vscode/
+__pycache__/
